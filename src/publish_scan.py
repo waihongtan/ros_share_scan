@@ -123,7 +123,6 @@ class PublishScan(MQTTClient):
 
 if __name__ == "__main__":
     rospy.init_node('publish_scan')
-    print("haha")
     robot_name =  rospy.get_param("/robot_name", 'robot1')
     broker= rospy.get_param("/mqtt_broker", 'localhost')
     port=rospy.get_param("/port", 1883)
