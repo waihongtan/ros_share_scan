@@ -44,17 +44,14 @@ class ReceiveScan():
         msg_rot = msg["rotation"]
         # q1 = [0,0,0,0]
         # q2 = [0,0,0,0]
-        # print("biu")
         # q1[0]= msg_rot["x"]
         # q1[1] = msg_rot["y"]
         # q1[2] = msg_rot["z"]
         # q1[3] = msg_rot["w"]
-        # print("ha")
         # q2[0] = self.pose.pose.orientation.x 
         # q2[1] = self.pose.pose.orientation.y
         # q2[2] = self.pose.pose.orientation.z 
         # q2[3] = self.pose.pose.orientation.w
-        # print("haha") 
         # q_new = quaternion_multiply(q1,q2)
         # print(q1[2],q2[2],q_new[2])
         t.transform.translation.x = msg_trans["x"] 
@@ -67,11 +64,9 @@ class ReceiveScan():
         br.sendTransform(t)
 
     def publish_scan(self,msg):
-        print("haha")
         pub = rospy.Publisher('%s/scan'%(subscribed_robot), LaserScan, queue_size=1000)
         #rate = ros
         # py.Rate(10)
-        print("hoho")
         #while not rospy.is_shutdown():
         scan_msg = LaserScan()
         #scan_msg = message_converter.convert_dictionary_to_ros_message("sensor_msgs/LaserScan", msg)
@@ -84,8 +79,6 @@ class ReceiveScan():
         scan_msg.time_increment = msg["time_increment"]
         scan_msg.ranges = msg["ranges"]
         scan_msg.intensities = msg["intensities"]
-        #print(msg["scan"])
-        #print(scan_msg)
         pub.publish(scan_msg)
         rospy.logdebug("ROS published to {}/scan".format(subscribed_robot))
         #rate.sleep()
