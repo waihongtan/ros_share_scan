@@ -1,0 +1,5 @@
+robot_name: robot1
+mqtt_broker: localhost
+port: 1883
+username: robot    
+password: 1234

@@ -1,0 +1,11 @@
+  <launch>
+  <!-- share_scan -->
+  <node pkg="share_scan" type="publish_scan.py" respawn="false" name="publish_scan" output="screen">
+    <rosparam file="$(find share_scan)/param/pub_scan.yaml" command="load"/>
+  </node>
+
+  <node pkg="share_scan" type="receive_scan.py" respawn="false" name="receive_scan" output="screen">
+    <rosparam file="$(find share_scan)/param/rec_scan.yaml" command="load"/>
+    <param name="subsribe_robot" value="robot1" />
+  </node>
+</launch>
